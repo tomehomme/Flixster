@@ -2,6 +2,7 @@ package com.example.flixster.adapters;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.text.InputFilter;
 import android.text.Layout;
 import android.util.Log;
@@ -49,6 +50,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         Log.d("MovieAdapter", "onBindViewHodler" + position);
         // get the movie position at is passed in thru position
         Movie movie = movies.get(position);
+        // set alternating row colors
+        if (position % 2 == 0){
+            holder.itemView.setBackgroundColor(Color.parseColor("#c1cada"));
+        }
+        else {
+            holder.itemView.setBackgroundColor(Color.WHITE);
+        }
         // bind the movie data into the view holder
         holder.bind(movie);
     }
