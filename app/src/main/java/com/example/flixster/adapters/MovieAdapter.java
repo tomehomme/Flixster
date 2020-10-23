@@ -1,6 +1,7 @@
 package com.example.flixster.adapters;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,8 @@ import com.example.flixster.R;
 import com.example.flixster.models.Movie;
 
 import java.util.List;
+
+import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
     // context so we can inflate the view - where the adapter view is
@@ -74,7 +77,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             tvOverview.setText(movie.getOverview());
             // use the Glide library to render images
             // we will load the movie poster path into our ivPoster
-            Glide.with(context).load(movie.getPosterPath()).into(ivPoster);
+            String imgUrl;
+            // if phone is in landscape, then set imgURL to backdrop
+            if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                imgUrl = movie.getBackdropPath();
+            }
+            else {
+                imgUrl = movie.getPosterPath();
+            }
+            // else default to poser image
+            Glide.with(context).load(imgUrl).into(ivPoster);
 
         }
     }

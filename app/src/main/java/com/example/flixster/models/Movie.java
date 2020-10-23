@@ -9,12 +9,14 @@ import java.util.List;
 
 // will encapsulate the idea of a movie
 public class Movie {
+    String backdropPath;
     String posterPath;
     String title;
     String overview;
     public Movie(JSONObject jsonObject) throws JSONException {
         // if any get string fails then the JSONException will handle it
         posterPath = jsonObject.getString("poster_path");
+        backdropPath = jsonObject.getString("backdrop_path");
         title =  jsonObject.getString("original_title");
         overview = jsonObject.getString("overview");
     }
@@ -33,6 +35,10 @@ public class Movie {
         // here we are hardcoding the width to be 342
         // TODO: fetch all available sizes then append to base url then append the posterPath
         return String.format("https://image.tmdb.org/t/p/w342/%s", posterPath);
+    }
+
+    public String getBackdropPath() {
+        return String.format("https://image.tmdb.org/t/p/w342/%s", backdropPath);
     }
 
     public String getTitle() {
