@@ -2,6 +2,7 @@ package com.example.flixster.adapters;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.text.InputFilter;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -74,16 +75,28 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         public void bind(Movie movie) {
             // will bind the movie
             tvTitle.setText(movie.getTitle());
-            tvOverview.setText(movie.getOverview());
             // use the Glide library to render images
             // we will load the movie poster path into our ivPoster
             String imgUrl;
             // if phone is in landscape, then set imgURL to backdrop
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 imgUrl = movie.getBackdropPath();
+                            tvOverview.setText(movie.getOverview());
+
             }
             else {
+                // if the phone is in landscape then set a limit on how many characters are displayed
                 imgUrl = movie.getPosterPath();
+                boolean isOverMaxLength = false;
+                int maxLength = 300;
+                String overView = movie.getOverview();
+                if (overView.length() > maxLength) {
+                    isOverMaxLength = true;
+                    overView = overView.substring(0,maxLength-3);
+                }
+                // figure out if we should add ... to the end or not based on length of text
+                tvOverview.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength)});
+                tvOverview.setText(overView + (isOverMaxLength ? "..." : ""));
             }
             // else default to poser image
             Glide.with(context).load(imgUrl).into(ivPoster);
