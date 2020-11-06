@@ -10,34 +10,20 @@ Time spent: **4** hours spent in total
 
 The following **required** functionality is completed:
 
-* [x] User can **view a list of movies (title, poster image, and overview) currently playing in theaters from the Movie Database API.**
+* [x] User can sign in to Twitter using OAuth login (2 points)
+* [x] User can view the tweets from their home timeline (4 points)
+    * [x] For each tweet, the author's username, icon, and body are displayed
+* [x] User can referesh tweets timeline by pulling down to refersh (i.e pull-to-refresh)
 
 The following **optional** features are implemented:
 
-* [x] In *portrait* mode, the poster image, title, and movie overview is shown.
-* [x] In *landscape* mode, the rotated alternate layout should use the backdrop image instead and show the title and movie overview to the right of it
-* [x] Improved the user interface providing spacing between each movie and alternating row colors.
-
-The following **additional** features are implemented:
-
-* [x] Improved the user interface by limiting the number of characters per movie in *portrait* mode
+* [x] Enabled infinite scrolling, which displays older tweetes
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-### Portrait view
-
-<img src='./portraitWalkthrough.gif' title='Portrait Video Walkthrough' width='' alt='Portrait Video Walkthrough' />
-
-### Landscape view
-
-<img src='./LandscapeWalkthrough.gif' title='Landscape Video Walkthrough' width='' alt='Landscape Video Walkthrough' />
-
-
-GIF created with [ScreenToGif](https://www.screentogif.com/).
-
-## Notes
+<img src='./walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 
 ## License
